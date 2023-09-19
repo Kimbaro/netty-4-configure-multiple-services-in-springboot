@@ -1,0 +1,40 @@
+server:
+  port: 8081
+  netty:
+    boss-count: 1
+    worker-count: 32
+    keep-alive: false
+    backlog: 2
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://10.10.1.52:5432/bcwork_shinhan
+    username: blueuser
+    password: blueuser
+  db52-lbs:
+    datasource:
+      username: blueuser
+      password: blueuser
+      jdbc-url: jdbc:postgresql://10.10.1.52:5432/bcwork_shinhan
+      driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true
+
+# 사용자정의
+bc:
+  kafka:
+    brokers: 10.10.1.52:9092
+
+logging:
+  pattern:
+    file: "[%d{HH:mm:ss.SSS}][%-5level][%logger.%method:line%line] - %msg%n"
+    level:
+  file:
+    name: /bluechip/program/bc-work-shinhan-messageQ/logs/service.log
+  logback:
+    rollingpolicy:
+      max-history: 15
+      file-name-pattern: "/bluechip/program/bc-work-shinhan-messageQ/logs/service.log.%d{yyyy-MM-dd}.%i"
+  level:
+    root: info

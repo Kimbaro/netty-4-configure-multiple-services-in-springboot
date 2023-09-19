@@ -1,0 +1,27 @@
+curl --resolve --insecure "int.tbapi.kt.com:443:121.135.155.197" -X POST -v 'http://int.tbapi.kt.com/zonecast/v1.0/getLocationOfMultipleUsers' \
+--header 'Content-Type: application/json' --header 'Authorization: Basic QUlJODMyMDA0MDk3MFNIUE9DSjpUQks4MzIwMDQwOTcwSVRKV0lQ' \
+--data-raw '{
+        "request": {
+                "customerId": "bluechipcns",
+                "subCustomerId": "6390c3fd86",
+                "subCustomerType": "0",
+                "requestType": "quick",
+                "targets": "01090032563"
+        }
+}'
+
+
+curl --resolve --insecure "int.api.kt.com:443:221.168.62.180" -X POST -v 'https://int.api.kt.com/zonecast/v1.0/getLocationOfMultipleUsers' \
+--header 'Content-Type: application/json' --header 'Authorization: Basic QUlJNzQ0MDA2Mzc2M0VSR0ZRVDpTVks3NDQwMDYzNzYzQlRMUkZG' \
+--data-raw '{
+        "request": {
+                "customerId": "bluechipcns",
+                "subCustomerId": "6390c3fd86",
+                "subCustomerType": "0",
+                "requestType": "quick",
+                "targets": "01090032563"
+        }
+}'
+
+
+
