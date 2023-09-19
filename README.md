@@ -1,6 +1,6 @@
 Postgresql DB에 아래 함수 생성해야 합니다.
 
-```sql
+```postgresql
 create function set_flag_number(flag int) returns int
     language plpgsql
 as
