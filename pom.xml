@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.bluechip</groupId>
-    <artifactId>bc-work-shinhan-messageQ</artifactId>
+    <artifactId>bc-zonecast</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bc-work-shinhan-messageQ</name>
-    <description>bc-work-shinhan-messageQ</description>
+    <name>bc-zonecast</name>
+    <description>bc-zonecast</description>
     <properties>
         <java.version>17</java.version>
     </properties>
