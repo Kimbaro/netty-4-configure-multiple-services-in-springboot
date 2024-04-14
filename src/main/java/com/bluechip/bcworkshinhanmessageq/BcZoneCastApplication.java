@@ -7,20 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BcZoneCastApplication {
     private int port;
 
-//    @Autowired
-//    @Qualifier("fixed_response_thread_pool_executor")
-//    ThreadPoolExecutor fixedResponseThreadPoolExecutor;
-
-//    @Autowired
-//    @Qualifier("fixed_request_thread_pool_executor")
-//    ThreadPoolExecutor fixedRequestThreadPoolExecutor;
-
     public static void main(String[] args) {
         SpringApplication.run(BcZoneCastApplication.class, args);
-//        AbstractApplicationContext context = null;
-//        context = new AnnotationConfigApplicationContext(BcWorkShinhanMessageQApplication.class);
-//        context.registerShutdownHook();
-
     }
 }
 
