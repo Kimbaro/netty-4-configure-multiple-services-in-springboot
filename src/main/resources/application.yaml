@@ -1,7 +1,6 @@
 netty-ports:
   basic: 8080
   basic2: 8081
-  basic3: 8082
 
 logging:
   pattern:

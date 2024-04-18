@@ -7,6 +7,9 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 
 import java.util.List;
 
+/**
+ * 요청 페이로드 파싱없이 모든 데이터 수신처리
+ * */
 public class ServerDecoder extends ByteToMessageDecoder {
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
@@ -18,7 +21,6 @@ public class ServerDecoder extends ByteToMessageDecoder {
 
         RequestPayload requestVO = new RequestPayload();
         requestVO.setReqFullTextMessage(new String(btsMsg));
-        requestVO.setInitTime(System.currentTimeMillis());
         out.add(requestVO);
     }
 }

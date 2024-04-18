@@ -19,6 +19,6 @@ public class SessionHandler extends ChannelDuplexHandler {
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         String remoteAddress = ctx.channel().remoteAddress().toString();
-        log.info("EVENT->channelActive Remote Address: " + remoteAddress);
+        log.info("EVENT| channelActive Remote Address [{}]",remoteAddress);
     }
 }

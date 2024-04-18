@@ -6,6 +6,8 @@ import lombok.Data;
 public class RequestPayload {
 
     private String reqFullTextMessage = "";
-    private long initTime;
+    private String reqHeaderTextMessage = "";
+    private String reqBodyTextMessage = "";
+    private long initTime = System.currentTimeMillis();
 
 }

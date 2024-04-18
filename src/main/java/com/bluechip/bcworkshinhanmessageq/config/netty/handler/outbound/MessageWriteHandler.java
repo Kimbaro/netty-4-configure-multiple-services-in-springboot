@@ -16,13 +16,13 @@ import org.springframework.stereotype.Component;
 public class MessageWriteHandler extends ChannelOutboundHandlerAdapter {
     @Override
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-        log.info("EVENT| handlerWrite [write]");
-        super.write(ctx, msg, promise);
+        log.info("EVENT| handlerWrite:[{}]", (String)msg);
     }
 
     @Override
     public void flush(ChannelHandlerContext ctx) throws Exception {
         log.info("EVENT| handlerFlush [flush]");
-        super.flush(ctx);
+        ctx.disconnect();
     }
+
 }
