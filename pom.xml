@@ -8,11 +8,11 @@
         <version>3.1.2-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.bluechip</groupId>
-    <artifactId>bc-zonecast</artifactId>
+    <groupId>com.template</groupId>
+    <artifactId>netty</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bc-zonecast</name>
-    <description>bc-zonecast</description>
+    <name>netty-4-template</name>
+    <description>netty-4-template</description>
     <properties>
         <java.version>17</java.version>
     </properties>
