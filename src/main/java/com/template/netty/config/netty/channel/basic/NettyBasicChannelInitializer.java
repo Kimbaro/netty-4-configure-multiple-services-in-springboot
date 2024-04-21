@@ -4,7 +4,8 @@ import com.template.netty.config.netty.handler.decode.ServerDecoder;
 import com.template.netty.config.netty.handler.duplex.ErrorHandler;
 import com.template.netty.config.netty.handler.duplex.SessionHandler;
 import com.template.netty.config.netty.handler.inbound.BasicMessageHandler;
-import com.template.netty.config.netty.handler.outbound.MessageWriteHandler;
+import com.template.netty.config.netty.handler.outbound.MessageFlushHandler;
+import com.template.netty.config.netty.handler.outbound.MessageWriteFlushHandler;
 import com.template.netty.modules.threadHandler.request.RequestThreadCacheData;
 import com.template.netty.modules.threadHandler.response.ResponseThreadCacheData;
 import com.template.netty.modules.threadHandler.service.ServiceThreadCacheData;
@@ -15,7 +16,6 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.Charset;
@@ -45,7 +45,7 @@ public class NettyBasicChannelInitializer extends ChannelInitializer<SocketChann
         /*=======L7 Routing=======*/
         /*duplex*/
         pipeline.addLast(new SessionHandler());
-
+        
         /*inbound*/
         pipeline.addLast(serverDecoder);
         pipeline.addLast(new StringDecoder(Charset.defaultCharset()));
@@ -54,9 +54,7 @@ public class NettyBasicChannelInitializer extends ChannelInitializer<SocketChann
 
         /*duplex*/
         pipeline.addLast(new ErrorHandler());
-
         /*outbound*/
-        pipeline.addLast(new MessageWriteHandler());
-
+        pipeline.addLast(new MessageWriteFlushHandler());
     }
 }
