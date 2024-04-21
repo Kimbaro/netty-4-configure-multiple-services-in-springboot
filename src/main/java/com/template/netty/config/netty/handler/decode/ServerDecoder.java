@@ -21,6 +21,7 @@ public class ServerDecoder extends ByteToMessageDecoder {
 
         RequestPayload requestVO = new RequestPayload();
         requestVO.setReqFullTextMessage(new String(btsMsg));
+        requestVO.setSessionHandlerContext(ctx);
         out.add(requestVO);
     }
 }

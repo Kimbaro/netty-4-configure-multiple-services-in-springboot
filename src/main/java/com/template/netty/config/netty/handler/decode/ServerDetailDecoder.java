@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * 요청 페이로드 파싱 후 모든 데이터 수신처리
- * */
+ */
 @Slf4j
 public class ServerDetailDecoder extends ByteToMessageDecoder {
     @Override
@@ -27,13 +27,14 @@ public class ServerDetailDecoder extends ByteToMessageDecoder {
         byte[] headerBuffer = new byte[32];
         in.readBytes(headerBuffer);
         if (headerBuffer.length < 32) {
-            log.info("EVENT->payload header length mismatch | [{} < 32]", headerBuffer.length);
+            log.info("NETTY-EVENT->payload header length mismatch | [{} < 32]", headerBuffer.length);
             ctx.close();
             return;
         }
         String headerText = new String(headerBuffer);
 
         in.resetReaderIndex();
+        String flag = headerText.substring(0, 5).trim();
         Integer bodyLength = Integer.parseInt(headerText.substring(5, 11).trim());
         iReadableBytes = in.readableBytes();
         if (iReadableBytes < bodyLength) {
@@ -46,13 +47,15 @@ public class ServerDetailDecoder extends ByteToMessageDecoder {
         in.readBytes(bodyBuffer);
 //                log.info("-----> {} {}", bodyLength, body); -> 값 체크
         if (iReadableBytes < bodyLength) {
-            log.info("EVENT->payload body length mismatch | [{} < {}]", bodyBuffer.length, bodyLength);
+            log.info("NETTY-EVENT->payload body length mismatch | [{} < {}]", bodyBuffer.length, bodyLength);
             return;
         }
 
         RequestPayload requestVO = new RequestPayload();
+        requestVO.setFlag(flag.toString());
         requestVO.setReqHeaderTextMessage(new String(headerBuffer));
         requestVO.setReqBodyTextMessage(new String(bodyBuffer));
+        requestVO.setSessionHandlerContext(ctx);
 
         log.info("input data -----> [{}]", requestVO);
         out.add(requestVO);

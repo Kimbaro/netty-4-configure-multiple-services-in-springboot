@@ -25,8 +25,7 @@ public class NettyServerFactory {
         ServerBootstrap b = new ServerBootstrap();
         b.group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
-                .handler(new LoggingHandler(LogLevel.DEBUG))
-                .childHandler(new NettyBasicChannelInitializer());
+                .handler(new LoggingHandler(LogLevel.DEBUG));
         return b;
     }
 
@@ -38,8 +37,7 @@ public class NettyServerFactory {
         ServerBootstrap b = new ServerBootstrap();
         b.group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
-                .handler(new LoggingHandler(LogLevel.DEBUG))
-                .childHandler(new NettyBasic2ChannelInitializer());
+                .handler(new LoggingHandler(LogLevel.DEBUG));
         return b;
     }
 }
