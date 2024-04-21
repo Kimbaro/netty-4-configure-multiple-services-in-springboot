@@ -6,6 +6,10 @@ server-setup:
     request: 1
     response: 10
     service: 1
+  thread-delay:
+    request: 100
+    response: 100
+    service: 100
 
 logging:
   pattern:

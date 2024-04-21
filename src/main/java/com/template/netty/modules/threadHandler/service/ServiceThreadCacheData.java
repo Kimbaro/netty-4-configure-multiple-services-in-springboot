@@ -31,10 +31,10 @@ public class ServiceThreadCacheData {
         RequestPayload requestPayload = null;
         synchronized (monitor) {
             if (this.cacheDataList.size() > 0) {
+                log.info("\nTHREAD-POOL {} \n| getServicePayload \n| CURRENT-SIZE {} \n| PULL-CACHE {}", currentThread().getName(), cacheDataMap.size(), requestPayload);
                 requestPayload = this.cacheDataList.remove(0);
                 this.cacheDataMap.remove(requestPayload.getUUID_OBJ());
             }
-            log.info("\nTHREAD-POOL {} \n| getServicePayload \n| CURRENT-SIZE {} \n| PULL-CACHE {}", currentThread().getName(), cacheDataMap.size(), requestPayload);
         }
         return requestPayload;
     }

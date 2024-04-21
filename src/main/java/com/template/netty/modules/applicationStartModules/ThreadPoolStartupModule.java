@@ -33,18 +33,13 @@ public class ThreadPoolStartupModule implements ApplicationListener<ApplicationR
         for (int i = 0; i < requestThreadCount; i++) {
             context.getBean(RequestThreadHandler.class).start();
         }
-
         log.info("setup ServiceThreadPool");
         for (int i = 0; i < serviceThreadCount; i++) {
             context.getBean(ServiceThreadHandler.class).start();
         }
-
-        boolean check = false;
-        if(check) {
-            log.info("setup ResponseThreadPool");
-            for (int i = 0; i < responseThreadCount; i++) {
-                context.getBean(ResponseThreadHandler.class).start();
-            }
+        log.info("setup ResponseThreadPool");
+        for (int i = 0; i < responseThreadCount; i++) {
+            context.getBean(ResponseThreadHandler.class).start();
         }
     }
 }

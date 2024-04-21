@@ -38,5 +38,6 @@ public class ErrorHandler extends ChannelDuplexHandler {
             errorPayload.setResBodyTextMessage(sampleBody);
         }
         ctx.writeAndFlush(errorPayload.getResHeaderTextMessage()+errorPayload.getResBodyTextMessage());
+        ctx.disconnect();
     }
 }

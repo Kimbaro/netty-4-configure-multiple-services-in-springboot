@@ -6,6 +6,7 @@ import com.template.netty.modules.threadHandler.request.RequestThreadCacheData;
 import com.template.netty.modules.threadHandler.response.ResponseThreadCacheData;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class ServiceThreadHandler {
     private final ServiceThreadCacheData serviceThreadCacheData;
     private final ApplicationContext context;
 
+    @Value("${server-setup.thread-delay.service}")
+    private int delay;
+
     @Async("serviceThreadPool")
     public void start() {
         RequestPayload requestPayload = null;
@@ -30,7 +34,7 @@ public class ServiceThreadHandler {
             try {
                 requestPayload = serviceThreadCacheData.getServicePayload();
                 if (requestPayload == null) {
-                    sleep(10000);
+                    sleep(delay);
                     continue;
                 }
                 execute(requestPayload);
@@ -41,7 +45,7 @@ public class ServiceThreadHandler {
     }
 
     private void execute(RequestPayload requestPayload) {
-        log.info("\nTHREAD-POOL {} \n| execute \n| CURRENT-CACHE {}", currentThread().getName(), requestPayload);
+        log.info("\nSERVICE-THREAD-POOL {} \n| execute \n| CURRENT-CACHE {}", currentThread().getName(), requestPayload);
         ModelTemplate modelTemplate = null;
         if (requestPayload.getFlag() == null) {
             //router
