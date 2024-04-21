@@ -1,6 +1,9 @@
 package com.template.netty.config.netty.handler.outbound;
 
-import io.netty.channel.*;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelPromise;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -13,16 +16,11 @@ import org.springframework.stereotype.Component;
 @Component
 @ChannelHandler.Sharable
 @RequiredArgsConstructor
-public class MessageWriteHandler extends ChannelOutboundHandlerAdapter {
-    @Override
-    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-        log.info("EVENT| handlerWrite:[{}]", (String)msg);
-    }
+public class MessageFlushHandler extends ChannelOutboundHandlerAdapter {
 
     @Override
     public void flush(ChannelHandlerContext ctx) throws Exception {
-        log.info("EVENT| handlerFlush [flush]");
+        log.info("NETTY-EVENT| handlerFlush [flush]");
         ctx.disconnect();
     }
-
 }

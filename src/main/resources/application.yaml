@@ -1,6 +1,15 @@
-netty-ports:
-  basic: 8080
-  basic2: 8081
+server-setup:
+  port:
+    basic: 8080
+    basic2: 8081
+  thread-count:
+    request: 1
+    response: 10
+    service: 1
+  thread-delay:
+    request: 100
+    response: 100
+    service: 100
 
 logging:
   pattern:

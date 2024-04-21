@@ -23,7 +23,7 @@ public class ErrorHandler extends ChannelDuplexHandler {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         // Close the connection when an exception is raised.
-        log.info("EVENT| exceptionCaught [{}]",cause.getMessage());
+        log.info("NETTY-EVENT| exceptionCaught [{}]",cause.getMessage());
 //        cause.printStackTrace();
         ResponseErrorPayload errorPayload = new ResponseErrorPayload();
         if(cause.getMessage().contains("NumberFormatException")){
@@ -38,5 +38,6 @@ public class ErrorHandler extends ChannelDuplexHandler {
             errorPayload.setResBodyTextMessage(sampleBody);
         }
         ctx.writeAndFlush(errorPayload.getResHeaderTextMessage()+errorPayload.getResBodyTextMessage());
+        ctx.disconnect();
     }
 }
