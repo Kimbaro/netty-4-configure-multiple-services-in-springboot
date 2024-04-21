@@ -14,7 +14,7 @@ TCP 기반 대용량 Socket/Http 통신 환경을 구성하고 다중포트를 �
 
 # 시스템구성
 
-![Untitled]([https://prod-files-secure.s3.us-west-2.amazonaws.com/0d776c34-2a3a-47e0-86bc-8007a70e4088/16a4d627-e570-48e9-a4b5-c9953ba0d466/Untitled.png](https://kimbaro.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0d776c34-2a3a-47e0-86bc-8007a70e4088%2F16a4d627-e570-48e9-a4b5-c9953ba0d466%2FUntitled.png?table=block&id=d2dd6a7f-82e3-4d45-a117-450a3b45e71f&spaceId=0d776c34-2a3a-47e0-86bc-8007a70e4088&width=1630&userId=&cache=v2))
+![Untitled](https://file.notion.so/f/f/0d776c34-2a3a-47e0-86bc-8007a70e4088/16a4d627-e570-48e9-a4b5-c9953ba0d466/Untitled.png?id=d2dd6a7f-82e3-4d45-a117-450a3b45e71f&table=block&spaceId=0d776c34-2a3a-47e0-86bc-8007a70e4088&expirationTimestamp=1713808800000&signature=gi3Lx-YHW3Y2JdKM96tpr9wOB6MmpHkaTl4LGJSzB5Y&downloadName=Untitled.png)
 
 1. 8080, 8081 포트를 바인딩 합니다.
     1. boss-thread
