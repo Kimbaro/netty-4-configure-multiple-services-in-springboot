@@ -1,0 +1,50 @@
+server-setup:
+  port:
+    basic: 8080
+    basic2: 8081
+  thread-count:
+    request: 1
+    response: 10
+    service: 1
+  thread-delay:
+    request: 100
+    response: 100
+    service: 100
+
+spring:
+  cache:
+    type: redis
+    host: localhost
+    port: 6379
+    redis:
+      time-to-live: 60000
+  jpa.database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+    #h2
+    driver-class-name: 'org.h2.Driver'
+    jdbc-url: 'jdbc:h2:mem:test'
+    username: test
+    password: 1234
+  datasources:
+    #h2
+    db00:
+      driver-class-name: 'org.h2.Driver'
+      jdbc-url: 'jdbc:h2:mem:test0'
+      username: test
+      password: 1234
+    db01:
+      driver-class-name: 'org.h2.Driver'
+      jdbc-url: 'jdbc:h2:mem:test1'
+      username: test
+      password: 1234
+
+logging:
+  pattern:
+    file: "[%d{HH:mm:ss.SSS}][%-5level][%logger.%method:line%line] - %msg%n"
+    level:
+  logback:
+    rollingpolicy:
+      max-history: 15
+      file-name-pattern: "/test/program/logs/service.log.%d{yyyy-MM-dd}.%i"
+  level:
+    root: info
