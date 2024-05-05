@@ -16,32 +16,32 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(
         basePackages = {"com.template.netty.db.db00.repo"},
-        entityManagerFactoryRef = "primaryEntityManager",
-        transactionManagerRef = "primaryTransactionManager"
+        entityManagerFactoryRef = "db00EntityManager",
+        transactionManagerRef = "db00TransactionManager"
 )
 public class JpaDb00Config {
     @Primary
-    @Bean(name = "primaryTransactionManager")
-    public PlatformTransactionManager primaryTransactionManager() {
+    @Bean(name = "db00TransactionManager")
+    public PlatformTransactionManager db00TransactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(primaryEntityManager().getObject());
+        transactionManager.setEntityManagerFactory(db00EntityManager().getObject());
         return transactionManager;
     }
 
     @Primary
-    @Bean(name = "primaryEntityManager")
-    public LocalContainerEntityManagerFactoryBean primaryEntityManager() {
+    @Bean(name = "db00EntityManager")
+    public LocalContainerEntityManagerFactoryBean db00EntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(primaryDataSource());
+        em.setDataSource(db00DataSource());
         em.setPackagesToScan("com.template.netty.db.db00.entity");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return em;
     }
 
     @Primary
-    @Bean(name = "primaryDataSource")
-    @ConfigurationProperties(prefix = "spring.datasources.db00")
-    public DataSource primaryDataSource() {
+    @Bean(name = "db00DataSource")
+    @ConfigurationProperties(prefix = "spring.datasources.sql.db00")
+    public DataSource db00DataSource() {
         return DataSourceBuilder.create().build();
     }
 }
