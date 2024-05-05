@@ -46,3 +46,4 @@ TCP 기반 대용량 Socket/Http 통신 환경을 구성하고 다중포트를 �
 - spring boot 3
 - intellij
 - H2DB
+- REDIS
