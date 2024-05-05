@@ -14,28 +14,47 @@ server-setup:
 spring:
   cache:
     type: redis
-    host: localhost
-    port: 6379
-    redis:
-      time-to-live: 60000
   jpa.database-platform: org.hibernate.dialect.H2Dialect
   datasource:
-    #h2
+    #JPA Primary Setting
     driver-class-name: 'org.h2.Driver'
     jdbc-url: 'jdbc:h2:mem:test'
     username: test
     password: 1234
   datasources:
+    #multiple datasource config
     #h2
-    db00:
-      driver-class-name: 'org.h2.Driver'
-      jdbc-url: 'jdbc:h2:mem:test0'
-      username: test
-      password: 1234
-    db01:
-      driver-class-name: 'org.h2.Driver'
-      jdbc-url: 'jdbc:h2:mem:test1'
-      username: test
+    sql:
+      db00:
+        driver-class-name: 'org.h2.Driver'
+        jdbc-url: 'jdbc:h2:mem:test0'
+        username: test
+        password: 1234
+      db01:
+        driver-class-name: 'org.h2.Driver'
+        jdbc-url: 'jdbc:h2:mem:test1'
+        username: test
+        password: 1234
+    nosql:
+      redis:
+        redis00:
+          host: localhost
+          port: 6379
+          password: 1234
+        redis01:
+          host: localhost
+          port: 6379
+          password: 1234
+  #REDIS Primary Setting
+  data:
+    redis:
+      lettuce:
+        pool:
+          max-active: 5
+          max-idle: 5
+          min-idle: 2
+      host: localhost
+      port: 6379
       password: 1234
 
 logging:
@@ -48,3 +67,7 @@ logging:
       file-name-pattern: "/test/program/logs/service.log.%d{yyyy-MM-dd}.%i"
   level:
     root: info
+server:
+  port: 8079
+  servlet:
+    context-path: "/api/v1"
