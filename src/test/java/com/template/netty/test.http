@@ -3,7 +3,7 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8079/api/v1/test/find-ip/00000
+GET http://localhost:8079/api/v1/test/find-ip/00001
 Accept: application/json
 
 ###
@@ -12,7 +12,7 @@ POST http://localhost:8079/api/v1/test/save-ip-tables
 Content-Type: application/json
 
 {
-  "companyId": "00000",
+  "companyId": "00001",
   "ip": "127.0.0.1;127.0.0.2"
 }
 
